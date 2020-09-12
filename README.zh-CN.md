@@ -11,7 +11,7 @@
 [中文文档](https://gitee.com/ying32/govcl/wikis/pages) | 
 [更新日志](https://z-kit.cc/changelog.html) | 
 [加入QQ群](https://jq.qq.com/?_wv=1027&k=5Sv7Qiq) | 
-[视频教程(cyanBone)](https://video.0-w.cc/videos/1) | 
+[视频教程(非官方)](https://video.0-w.cc/videos/1) | 
 [赞助GoVCL](https://z-kit.cc/sponsor.html)   
 
 ----
@@ -24,7 +24,7 @@
 ----
 
 ### 预编译GUI库二进制下载（[源代码](https://github.com/ying32/liblcl)）       
-[![liblcl](https://img.shields.io/github/downloads/ying32/govcl/latest/liblcl-2.0.6.1.zip.svg)](https://github.com/ying32/govcl/releases/download/v2.0.6/liblcl-2.0.6.1.zip)  
+[![liblcl](https://img.shields.io/github/downloads/ying32/govcl/latest/liblcl-2.0.6.2.zip.svg)](https://github.com/ying32/govcl/releases/download/v2.0.6.2/liblcl-2.0.6.2.zip)  
 
 
 ### res2go工具下载（[文档、源代码](Tools/res2go)）  
