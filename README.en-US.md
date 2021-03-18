@@ -23,12 +23,12 @@ Cross-platform Golang GUI library, The core binding is [liblcl](https://github.c
 > If you want to support linux arm and linux 32bit, you need to compile the corresponding liblcl binary.   
 
 ### Pre-compiled GUI library binary download ([source code](https://github.com/ying32/liblcl))     
-[![liblcl](https://img.shields.io/github/downloads/ying32/govcl/latest/liblcl-2.0.7.zip.svg)](https://github.com/ying32/govcl/releases/download/v2.0.7/liblcl-2.0.7.zip)  
+[![liblcl](https://img.shields.io/github/downloads/ying32/govcl/latest/liblcl-2.0.10.zip.svg)](https://github.com/ying32/govcl/releases/download/v2.0.10/liblcl-2.0.10.zip)  
 
 
-### res2go Tool([doc, source code](Tools/res2go))    
+### res2go IDE plugin source code（[source code](https://github.com/ying32/res2go-ide-plugin)）  
 
-**Need to compile yourself: [Compile Guide](Tools/res2go/src/README.en-US.md)**   
+**How to use: [Installation method](https://gitee.com/ying32/govcl/wikis/pages?sort_id=2645001&doc_id=102420)**   
 
 > Note: Designed in Lazarus, code written in Golang.  
  
@@ -38,7 +38,7 @@ Cross-platform Golang GUI library, The core binding is [liblcl](https://github.c
 
 > go get -u github.com/ying32/govcl    
 
-*Note: You can also use go module mode, configure in go.mod, such as: `github.com/ying32/govcl v2.0.7+incompatible`, and replace the version number with the latest version.*  
+*Note: You can also use go module mode, configure in go.mod, such as: `github.com/ying32/govcl v2.0.10+incompatible`.*  
 
 #### Step 2: Write the code
 
@@ -164,11 +164,6 @@ func (f *TAboutForm) OnBtn1Click(sender vcl.IObject) {
 }
 ``` 
 
-* Method 3  
-```go
-// Not recommended, so no examples are given.
-```
-
 #### Step 3: Copy the corresponding binary   
 
 * Windows: Depending on whether the compiled binary is 32 or 64 bits, copy the corresponding `liblcl.dll` to the current executable file directory or system environment path.  
@@ -205,4 +200,4 @@ A: My English is bad. You can try using Google Translate [Chinese WIKI](https://
 ----
 
 ![jetbrains](https://z-kit.cc/assets/images/jetbrains.png)  
-[Support from jetbrains](https://www.jetbrains.com/?from=govcl)  
+[Thanks jetbrains](https://www.jetbrains.com/?from=govcl)  

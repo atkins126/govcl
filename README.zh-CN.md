@@ -10,7 +10,6 @@
 [截图查看](https://z-kit.cc/screenshot.html) | 
 [中文文档](https://gitee.com/ying32/govcl/wikis/pages) | 
 [更新日志](https://z-kit.cc/changelog.html) | 
-[加入QQ群](https://jq.qq.com/?_wv=1027&k=5Sv7Qiq) | 
 [视频教程(非官方)](https://video.0-w.cc/videos/1) | 
 [赞助GoVCL](https://z-kit.cc/sponsor.html)   
 
@@ -24,12 +23,12 @@
 ----
 
 ### 预编译GUI库二进制下载（[源代码](https://github.com/ying32/liblcl)）       
-[![liblcl](https://img.shields.io/github/downloads/ying32/govcl/latest/liblcl-2.0.7.zip.svg)](https://github.com/ying32/govcl/releases/download/v2.0.7/liblcl-2.0.7.zip)  
+[![liblcl](https://img.shields.io/github/downloads/ying32/govcl/latest/liblcl-2.0.10.zip.svg)](https://github.com/ying32/govcl/releases/download/v2.0.10/liblcl-2.0.10.zip)  
 
 
-### res2go工具下载（[文档、源代码](Tools/res2go)）  
+### res2go IDE插件源代码（[源代码](https://github.com/ying32/res2go-ide-plugin)）  
 
-**需要自己编译: [编译方法](Tools/res2go/src/README.md)**   
+**使用方法: [安装方法](https://gitee.com/ying32/govcl/wikis/pages?sort_id=2645001&doc_id=102420)**   
 
 > 注：用Lazarus设计界面，用Golang写代码。    
   
@@ -40,7 +39,7 @@
 
 > go get -u github.com/ying32/govcl  
 
-*注：也可用go module方式拉取，在go.mod中配置如：`github.com/ying32/govcl v2.0.7+incompatible`，其中的版本号替换为最新版本。*  
+*注：也可用go module方式拉取，在go.mod中配置如：`github.com/ying32/govcl v2.0.10+incompatible`。*  
 
 #### 步骤二：编写代码    
 
@@ -168,11 +167,6 @@ func (f *TAboutForm) OnBtn1Click(sender vcl.IObject) {
 
 ```
 
-* 方法三  
-```go
-// 不推荐，所以不给出示例了。  
-```
-
 #### 步骤三：复制对应的二进制    
 
 * Windows: 根据编译的二进制是32还是64位的，复制对应的`liblcl.dll`到当前可执行文件目录或系统环境路径下。 
@@ -204,4 +198,4 @@ func (f *TAboutForm) OnBtn1Click(sender vcl.IObject) {
 ----
 
 ![jetbrains](https://z-kit.cc/assets/images/jetbrains.png)   
-[来自jetbrains的支持](https://www.jetbrains.com/?from=govcl)  
+[鸣谢jetbrains](https://www.jetbrains.com/?from=govcl)  

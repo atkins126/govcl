@@ -53,20 +53,31 @@ type interfacePtr struct {
 	val *uintptr
 }
 
-func getInterfaceVal(value interface{}) uintptr {
-	if ptr := (*interfacePtr)(unsafe.Pointer(&value)).val; ptr != nil {
-		return *ptr
-	}
-	return 0
-}
-
 func IsNil(val interface{}) bool {
 	ptr := (*interfacePtr)(unsafe.Pointer(&val))
 	return ptr.tpy == 0 || ptr.val == nil
 }
 
+// 用作事件的唯一id
+func GetUID(v1, v2 uintptr) uintptr {
+	if v1 == 0 && v2 == 0 {
+		return 0
+	}
+	val := struct {
+		v1, v2 uintptr
+	}{v1, v2}
+	var result uintptr
+	p := (*byte)(unsafe.Pointer(&val))
+	for i := 0; i < int(unsafe.Sizeof(val)); i++ {
+		result = ((result << 2) | (result >> (unsafe.Sizeof(result)*8 - 2))) ^ uintptr(*p)
+		p = (*byte)(unsafe.Pointer(uintptr(unsafe.Pointer(p)) + 1))
+	}
+	//fmt.Println("UID:", result, ", v1=", v1, ", v2=", v2)
+	return uintptr(result)
+}
+
 // hashOf
-func hashOf(val interface{}) uintptr {
+func hashOf(obj uintptr, val interface{}) uintptr {
 	// 如果正在使用beginAddEvent和EndAddEvent则直接取这个值。
 	// 反之使用默认的行为。
 	if addingEvent {
@@ -77,7 +88,7 @@ func hashOf(val interface{}) uintptr {
 		}
 	}
 	// 默认返回ID
-	return reflect.ValueOf(val).Pointer() //getInterfaceVal(val)
+	return GetUID(obj, reflect.ValueOf(val).Pointer())
 }
 
 // 以下三个函数留给自动绑定事件使用。
@@ -96,14 +107,14 @@ func SetCurrentEventId(id uintptr) {
 }
 
 // 将事件添加到查找表中
-func addEventToMap(f interface{}) uintptr {
-	p := hashOf(f)
+func addEventToMap(obj uintptr, f interface{}) uintptr {
+	p := hashOf(obj, f)
 	eventCallbackMap.Store(p, f)
 	return p
 }
 
 //
-func GetaddEventToMapFn() func(f interface{}) uintptr {
+func GetAddEventToMapFn() func(obj uintptr, f interface{}) uintptr {
 	return addEventToMap
 }
 
@@ -118,8 +129,8 @@ func RemoveEventCallbackOf(Id uintptr) {
 }
 
 // 添加消息事件到消息表中
-func addMessageEventToMap(f interface{}) uintptr {
-	p := hashOf(f)
+func addMessageEventToMap(obj uintptr, f interface{}) uintptr {
+	p := hashOf(obj, f)
 	messageCallbackMap.Store(p, f)
 	return p
 }
@@ -147,6 +158,10 @@ func SetMessageCallback(ptr uintptr) {
 // 设置线程同步事件回调函数指针
 func SetThreadSyncCallback(ptr uintptr) {
 	setThreadSyncCallback.Call(ptr)
+}
+
+func SetRequestCallCreateParamsCallback(ptr uintptr) {
+	setRequestCallCreateParamsCallback.Call(ptr)
 }
 
 // 从Delphi/Lazarus字符串数组中获取指定索引的值

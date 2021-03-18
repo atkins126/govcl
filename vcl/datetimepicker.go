@@ -832,6 +832,14 @@ func (d *TDateTimePicker) SetFont(value *TFont) {
     DateTimePicker_SetFont(d.instance, CheckPtr(value))
 }
 
+func (d *TDateTimePicker) Kind() TDateTimeKind {
+    return DateTimePicker_GetKind(d.instance)
+}
+
+func (d *TDateTimePicker) SetKind(value TDateTimeKind) {
+    DateTimePicker_SetKind(d.instance, value)
+}
+
 func (d *TDateTimePicker) MaxDate() time.Time {
     return DateTimePicker_GetMaxDate(d.instance)
 }
@@ -975,6 +983,10 @@ func (d *TDateTimePicker) SetVisible(value bool) {
 // Set control click event.
 func (d *TDateTimePicker) SetOnClick(fn TNotifyEvent) {
     DateTimePicker_SetOnClick(d.instance, fn)
+}
+
+func (d *TDateTimePicker) SetOnCloseUp(fn TNotifyEvent) {
+    DateTimePicker_SetOnCloseUp(d.instance, fn)
 }
 
 // 设置改变事件。

@@ -7,3 +7,13 @@
 //----------------------------------------
 
 package vcl
+
+func (b *TBitmap) LoadFromBytes(data []byte) {
+	if len(data) == 0 {
+		return
+	}
+	mem := NewMemoryStreamFromBytes(data)
+	defer mem.Free()
+	mem.SetPosition(0)
+	b.LoadFromStream(mem)
+}

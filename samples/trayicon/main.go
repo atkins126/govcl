@@ -7,6 +7,7 @@ import (
 	_ "github.com/ying32/govcl/pkgs/winappres"
 	"github.com/ying32/govcl/vcl"
 	"github.com/ying32/govcl/vcl/types"
+	//"github.com/ying32/govcl/vcl/rtl"
 )
 
 func main() {
@@ -42,9 +43,12 @@ func main() {
 	item := vcl.NewMenuItem(mainForm)
 	item.SetCaption("显示(&S)")
 	item.SetOnClick(func(vcl.IObject) {
+		 
 		mainForm.Show()
 		// Windows上为了最前面显示，有时候要调用SetForegroundWindow
-		// 比如：win.SetForegroundWindow(mainForm.Handle())
+		//rtl.SetForegroundWindow(mainForm.Handle())
+		//vcl.Application.Restore()
+		//vcl.Application.BringToFront()
 	})
 	pm.Items().Add(item)
 
@@ -100,9 +104,10 @@ func main() {
 // 主要是用于linux跟macOS下，因为不能像Windows一样直接内置到资源中
 func loadMainIconFromStream(outIcon *vcl.TIcon) {
 	if outIcon.IsValid() {
-		mem := vcl.NewMemoryStreamFromBytes(mainIconBytes)
-		defer mem.Free() // 不要在阻塞的时候使用defer不然会一直到阻塞结束才释放，这里使用是因为这个函数结束了就释放了
-		mem.SetPosition(0)
-		outIcon.LoadFromStream(mem)
+		//mem := vcl.NewMemoryStreamFromBytes(mainIconBytes)
+		//defer mem.Free() // 不要在阻塞的时候使用defer不然会一直到阻塞结束才释放，这里使用是因为这个函数结束了就释放了
+		//mem.SetPosition(0)
+		//outIcon.LoadFromStream(mem)
+		outIcon.LoadFromBytes(mainIconBytes)
 	}
 }
